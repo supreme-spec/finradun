@@ -116,6 +116,37 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   const speakableJsonLd = generatePageSpeakableSchema("blogArticle", `/blog/${slug}`);
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Подходит ли эта статья для начинающего инвестора?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Материал адаптируется под разные уровни. Если вы только начинаете, начните с базовых понятий и переходите к практическим шагам постепенно.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Нужно ли применять эти стратегии самостоятельно?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Стратегии можно использовать как основу для самостоятельных решений, но перед серьёзными действиями рекомендуется консультация с квалифицированным специалистом.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Как часто обновляются материалы блога?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Блог регулярно пополняется новыми статьями с учётом изменений на рынке, законодательства и практики управления капиталом.",
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script
@@ -125,6 +156,10 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Header />
       <main style={{ paddingTop: "100px", minHeight: "80vh" }}>

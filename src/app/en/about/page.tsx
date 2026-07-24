@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata = {
   title: "About | Sergey Svistunov — Financial Advisor",
@@ -9,11 +10,75 @@ export const metadata = {
   alternates: { canonical: "/en/about" },
 };
 
+const faqItems = [
+  {
+    question: "What makes an independent financial advisor different?",
+    answer: "It means every recommendation is built around your goals, not around selling a specific bank or insurance product. That removes conflicts of interest.",
+  },
+  {
+    question: "What are your qualifications?",
+    answer: "NAUFOR level 7 certification, 8+ years in banking and capital management, 122nd place in the 2021 Best Private Investor of Russia contest (Moscow Exchange).",
+  },
+  {
+    question: "How does the first meeting work?",
+    answer: "We review your current situation, goals and constraints, then produce a clear action plan and a format for ongoing support.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "About | Sergey Svistunov — Financial Advisor",
+  description: "Who I am and how I work: 8+ years on financial markets, NAUFOR level 7 certification, independent advisory principles and capital management approach.",
+  datePublished: "2024-06-01",
+  dateModified: "2026-07-24",
+  author: {
+    "@type": "Person",
+    name: "Sergey Svistunov",
+    url: `${SITE_URL}/en/authors/sergey-svistunov`,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "RADUN",
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/favicon.svg`,
+    },
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/en/about`,
+  },
+};
+
+const externalSources = [
+  { name: "Moscow Exchange", url: "https://www.moex.com/en/" },
+  { name: "NAUFOR", url: "https://www.naufor.ru/en" },
+  { name: "Central Bank of Russia", url: "https://cbr.ru/en/" },
+  { name: "FINMARK", url: "https://www.finmarket.ru/" },
+];
+
 export default function AboutPageEn() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <Header />
       <main style={{ paddingTop: "140px", minHeight: "80vh", paddingBottom: "4rem" }}>
+        <article>
         <section className="container" style={{ padding: "0 1.5rem" }}>
           <div style={{ maxWidth: "900px", margin: "0 auto" }}>
             <div className="tag tag-gold" style={{ marginBottom: "1rem" }}>About</div>
@@ -54,8 +119,18 @@ export default function AboutPageEn() {
               <Link href="/en/contacts" className="btn btn-primary">Get in touch</Link>
               <Link href="/en/authors/sergey-svistunov" className="btn btn-outline">More about the author</Link>
             </div>
+
+            <h2 style={{ marginTop: "2.5rem", color: "var(--text-primary)", marginBottom: "1rem" }}>Sources</h2>
+            <ul style={{ color: "var(--text-secondary)", listStyle: "circle", paddingLeft: "20px", lineHeight: 2 }}>
+              {externalSources.map((src) => (
+                <li key={src.url}>
+                  <a href={src.url} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)", textDecoration: "none" }}>{src.name}</a>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
+        </article>
       </main>
       <Footer lang="en" />
     </>

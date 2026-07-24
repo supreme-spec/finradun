@@ -10,6 +10,8 @@ export function generateStaticParams() {
   return authors.map((a) => ({ slug: a.slug }));
 }
 
+export const revalidate = 604800;
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const author = getAuthor(slug);
@@ -57,11 +59,78 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
     sameAs: author.sameAs,
   };
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `Как записаться на консультацию к ${author.name}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Используйте контакты на этой странице: email, Telegram или форму на сайте. Консультации проходят онлайн.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Какая квалификация у автора?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: author.credentials.join("; "),
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Опыт работы в каких компаниях?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: author.experience,
+        },
+      },
+    ],
+  };
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `${author.name} | ${author.role}`,
+    description: author.bio,
+    datePublished: "2024-06-01",
+    dateModified: "2026-07-24",
+    author: {
+      "@type": "Person",
+      name: author.name,
+      url: `${SITE_URL}/authors/${author.slug}`,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "RADUN",
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/favicon.svg`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/authors/${author.slug}`,
+    },
+  };
+
+  const sourcesRu = [
+    { name: "Московская биржа", url: "https://www.moex.com/ru/" },
+    { name: "НАУФОР", url: "https://www.naufor.ru/" },
+    { name: "Центробанк РФ", url: "https://cbr.ru/" },
+    { name: "Cointelegraph — автор", url: "https://cointelegraph.com/" },
+  ];
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <Header />
       <main style={{ paddingTop: "140px", minHeight: "80vh", paddingBottom: "4rem" }}>
+        <article>
         <section className="container" style={{ padding: "0 1.5rem" }}>
           <div style={{ maxWidth: "900px", margin: "0 auto" }}>
             <div style={{ display: "flex", gap: "2rem", alignItems: "center", flexWrap: "wrap", marginBottom: "2.5rem" }}>
@@ -108,8 +177,18 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
             <div style={{ marginTop: "2rem" }}>
               <Link href="/authors" className="btn btn-ghost">← Все авторы</Link>
             </div>
+
+            <h2 style={{ marginTop: "2.5rem", color: "var(--text-primary)", marginBottom: "1rem" }}>Источники и ссылки</h2>
+            <ul style={{ color: "var(--text-secondary)", listStyle: "circle", paddingLeft: "20px", lineHeight: 2 }}>
+              {sourcesRu.map((src) => (
+                <li key={src.url}>
+                  <a href={src.url} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)", textDecoration: "none" }}>{src.name}</a>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
+        </article>
       </main>
       <Footer />
     </>

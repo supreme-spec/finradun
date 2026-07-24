@@ -1,19 +1,84 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata = {
-  title: "Риски и дисклеймер | FinRadun",
-  description: "Важная информация о рисках инвестирования, ограничениях ответственности и характере предоставляемых материалов. Ознакомьтесь перед принятием инвестиционных решений.",
+  title: "Риски инвестирования и дисклеймер | FinRadun",
+  description: "Важная информация о рисках инвестирования, ограничениях ответственности и характере предоставляемых материалов. Ознакомьтесь перед принятием решений.",
   keywords: "риски инвестирования, дисклеймер, ограничение ответственности, финансовые риски",
   alternates: { canonical: "/risk-disclosure" },
 };
 
+const faqItems = [
+  {
+    question: "Материалы сайта являются инвестиционной рекомендацией?",
+    answer: "Нет. Все материалы носят исключительно информационный характер и не являются индивидуальной инвестиционной рекомендацией.",
+  },
+  {
+    question: "Могу ли я потерять деньги, следуя материалам сайта?",
+    answer: "Инвестиции связаны с риском. Вы можете потерять часть или весь вложенный капитал. Решения принимаются пользователем самостоятельно.",
+  },
+  {
+    question: "Кто несёт ответственность за решения, принятые на основе сайта?",
+    answer: "Ответственность лежит исключительно на пользователе. Рекомендуется консультация с квалифицированным специалистом перед принятием решений.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Риски инвестирования и дисклеймер | FinRadun",
+  description: "Важная информация о рисках инвестирования, ограничениях ответственности и характере предоставляемых материалов. Ознакомьтесь перед принятием решений.",
+  datePublished: "2024-06-01",
+  dateModified: "2026-07-24",
+  author: {
+    "@type": "Person",
+    name: "Сергей Свистунов",
+    url: `${SITE_URL}/authors/sergey-svistunov`,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "RADUN",
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/favicon.svg`,
+    },
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/risk-disclosure`,
+  },
+};
+
+const sources = [
+  { name: "ФЗ-152 «О персональных данных»", url: "http://pravo.gov.ru/proxy/ips/?docbody=&nd=102102772" },
+  { name: "ЦБ РФ — инвесторам", url: "https://cbr.ru/investor/" },
+  { name: "Московская биржа — образование", url: "https://www.moex.ru/education/" },
+  { name: "ФСФР — предупреждения", url: "https://www.cfin.ru/regulators/fss/" },
+];
+
 export default function RiskDisclosurePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <Header />
       <main style={{ paddingTop: "140px", minHeight: "80vh", paddingBottom: "4rem" }}>
-        <article className="container" style={{ padding: "0 1.5rem", maxWidth: "800px", margin: "0 auto" }}>
+        <article>
+        <section className="container" style={{ padding: "0 1.5rem", maxWidth: "800px", margin: "0 auto" }}>
           <div className="tag tag-gold" style={{ marginBottom: "1rem" }}>Документы и соответствие</div>
           <h1 className="section-title" style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", marginBottom: "2rem" }}>
             Риски и дисклеймер
@@ -52,10 +117,20 @@ export default function RiskDisclosurePage() {
               Обработка персональных данных регулируется Политикой конфиденциальности и требованиями 152-ФЗ.
             </p>
 
-            <p style={{ marginTop: "1.5rem", fontSize: "0.85rem", fontStyle: "italic", color: "var(--text-muted)" }}>
-              Редакция от 4 июля 2026 года
-            </p>
+          <p style={{ marginTop: "1.5rem", fontSize: "0.85rem", fontStyle: "italic", color: "var(--text-muted)" }}>
+            Редакция от 4 июля 2026 года
+          </p>
+
+          <h2 style={{ marginTop: "2.5rem", color: "var(--text-primary)", marginBottom: "1rem" }}>Источники и ссылки</h2>
+          <ul style={{ color: "var(--text-secondary)", listStyle: "circle", paddingLeft: "20px", lineHeight: 2 }}>
+            {sources.map((src) => (
+              <li key={src.url}>
+                <a href={src.url} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)", textDecoration: "none" }}>{src.name}</a>
+              </li>
+            ))}
+          </ul>
           </div>
+        </section>
         </article>
       </main>
       <Footer />
