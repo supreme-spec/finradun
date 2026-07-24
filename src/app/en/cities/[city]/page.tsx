@@ -15,6 +15,8 @@ export async function generateStaticParams() {
   return rawCities.map((city) => ({ city: cityRouteSlug(city) }));
 }
 
+export const revalidate = 604800;
+
 function getCityEnglishName(city: string): string {
   if (city === "Москва") return "Moscow";
   if (city === "Санкт-Петербург") return "Saint Petersburg";
@@ -319,6 +321,24 @@ export default async function CityPageEn({ params }: Props) {
     },
   };
 
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": `Financial consulting in ${cityEnglish}`,
+    "provider": {
+      "@type": "Person",
+      "name": "Sergey Svistunov",
+      "jobTitle": "Independent Financial Advisor",
+      "url": SITE_URL,
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": cityEnglish,
+    },
+    "description": `Personalized financial consultations and investment management for residents of ${cityEnglish}.`,
+    "serviceType": "Financial Planning",
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
@@ -326,6 +346,7 @@ export default async function CityPageEn({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cityHowToJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <Header />
       <main style={{ paddingTop: "100px", minHeight: "80vh" }}>
         <article>

@@ -16,6 +16,8 @@ export async function generateStaticParams() {
   return rawCities.map((city) => ({ city: cityRouteSlug(city) }));
 }
 
+export const revalidate = 604800;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { city: slug } = await params;
   const city = cityNameFromSlug(slug);
@@ -237,6 +239,24 @@ export default async function CityPage({ params }: Props) {
     }
   };
 
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": `Финансовое консультирование в ${city}`,
+    "provider": {
+      "@type": "Person",
+      "name": "Сергей Свистунов",
+      "jobTitle": "Независимый финансовый советник",
+      "url": SITE_URL,
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": city,
+    },
+    "description": `Индивидуальные финансовые консультации и управление инвестициями для резидентов ${genitive}.`,
+    "serviceType": "Financial Planning",
+  };
+
   return (
     <>
       <script
@@ -258,6 +278,10 @@ export default async function CityPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
       <Header />
       <main style={{ paddingTop: "100px", minHeight: "80vh" }}>
