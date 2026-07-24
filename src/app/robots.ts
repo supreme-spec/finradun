@@ -7,23 +7,43 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/"],
+        disallow: ["/admin/", "/api/", "/_next/", "/static/"],
       },
       {
         userAgent: "Yandex",
         allow: "/",
-        disallow: ["/api/", "/_next/"],
+        disallow: ["/admin/", "/api/", "/_next/"],
       },
       {
-        userAgent: "GPTBot",
-        disallow: "/",
+        userAgent: "Googlebot",
+        allow: "/",
+      },
+      {
+        userAgent: "PerplexityBot",
+        allow: ["/", "/ai.txt", "/llms.txt", "/llms-full.txt"],
       },
       {
         userAgent: "ChatGPT-User",
         allow: "/",
       },
       {
-        userAgent: "CCBot",
+        userAgent: "OAI-SearchBot",
+        allow: "/",
+      },
+      {
+        userAgent: "ClaudeBot",
+        allow: "/",
+      },
+      {
+        userAgent: "anthropic-ai",
+        allow: "/",
+      },
+      {
+        userAgent: "YouBot",
+        allow: "/",
+      },
+      {
+        userAgent: "GPTBot",
         disallow: "/",
       },
       {
@@ -31,8 +51,28 @@ export default function robots(): MetadataRoute.Robots {
         disallow: "/",
       },
       {
-        userAgent: "PerplexityBot",
-        allow: "/",
+        userAgent: "CCBot",
+        disallow: "/",
+      },
+      {
+        userAgent: "Bytespider",
+        disallow: "/",
+      },
+      {
+        userAgent: "FacebookBot",
+        disallow: "/",
+      },
+      {
+        userAgent: "Amazonbot",
+        disallow: "/",
+      },
+      {
+        userAgent: "Applebot-Extended",
+        disallow: "/",
+      },
+      {
+        userAgent: "cohere-ai",
+        disallow: "/",
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

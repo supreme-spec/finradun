@@ -35,6 +35,7 @@ build_output.log
 
 # misc build artifacts
 index.html
+public/robots.txt
 
 # env files (can opt-in for committing if needed)
 .env*
