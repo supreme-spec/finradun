@@ -33,6 +33,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  overflow-x: hidden;
 }
 
 body {
@@ -41,6 +42,14 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+img, video, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ===================== TYPOGRAPHY ===================== */
