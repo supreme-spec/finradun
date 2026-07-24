@@ -97,6 +97,15 @@ def extract_metadata(content, filepath):
     if imgs_without_alt:
         issues.append(f"{len(imgs_without_alt)} изобр. без alt")
 
+    # --- Next.js Image components without alt ---
+    next_image_tags = re.findall(r'<Image\b[^>]*>', content)
+    next_imgs_without_alt = []
+    for img in next_image_tags:
+        if 'alt=' not in img:
+            next_imgs_without_alt.append(img[:80])
+    if next_imgs_without_alt:
+        issues.append(f"{len(next_imgs_without_alt)} Next.js Image без alt")
+
     # --- Article Schema ---
     has_article_schema = bool(re.search(r'"@type":\s*"Article"', content))
     has_person_schema = bool(re.search(r'"@type":\s*"Person"', content))
