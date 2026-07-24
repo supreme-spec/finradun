@@ -1,0 +1,265 @@
+[
+  {
+    "route": "/blog/:slug",
+    "filepath": "/root/www/finradun/src/app/blog/[slug]/page.tsx",
+    "title": "Статья не найдена | Radun",
+    "title_len": 25,
+    "description": null,
+    "desc_len": 0,
+    "has_h1": true,
+    "has_og_image": false,
+    "imgs_without_alt": 0,
+    "has_article_schema": true,
+    "has_person_schema": true,
+    "has_faq_schema": false,
+    "has_author": true,
+    "has_date": true,
+    "issues": [
+      "Title слишком короткий (25 симв.) — минимум 30",
+      "Description отсутствует",
+      "og:image отсутствует"
+    ],
+    "recommendations": []
+  },
+  {
+    "route": "/blog/beginners",
+    "filepath": "/root/www/finradun/src/app/blog/beginners/page.tsx",
+    "title": "Финансовая грамотность для начинающих | Блог Сергея Свистунова",
+    "title_len": 62,
+    "description": "Базовые принципы финансовой грамотности и инвестирования простым языком.",
+    "desc_len": 72,
+    "has_h1": true,
+    "has_og_image": false,
+    "imgs_without_alt": 0,
+    "has_article_schema": false,
+    "has_person_schema": false,
+    "has_faq_schema": false,
+    "has_author": false,
+    "has_date": false,
+    "issues": [
+      "Description слишком короткий (72 симв.) — рекомендуется 140-160",
+      "og:image отсутствует"
+    ],
+    "recommendations": [
+      "Title 62 симв. — можно сократить до 50-60",
+      "Description короткий (72 симв.)",
+      "Article/FAQ Schema не найден",
+      "Article Schema не найден",
+      "Автор (Schema)",
+      "Дата (Schema)"
+    ]
+  },
+  {
+    "route": "/blog/intermediate",
+    "filepath": "/root/www/finradun/src/app/blog/intermediate/page.tsx",
+    "title": "Инвестиции для среднего уровня | Блог Сергея Свистунова",
+    "title_len": 55,
+    "description": "Продвинутые стратегии инвестирования для опытных инвесторов.",
+    "desc_len": 60,
+    "has_h1": true,
+    "has_og_image": false,
+    "imgs_without_alt": 0,
+    "has_article_schema": false,
+    "has_person_schema": false,
+    "has_faq_schema": false,
+    "has_author": false,
+    "has_date": false,
+    "issues": [
+      "Description слишком короткий (60 симв.) — рекомендуется 140-160",
+      "og:image отсутствует"
+    ],
+    "recommendations": [
+      "Description короткий (60 симв.)",
+      "Article/FAQ Schema не найден",
+      "Article Schema не найден",
+      "Автор (Schema)",
+      "Дата (Schema)"
+    ]
+  },
+  {
+    "route": "/blog",
+    "filepath": "/root/www/finradun/src/app/blog/page.tsx",
+    "title": "Блог по Инвестициям | Обучение | Сергей Свистунов",
+    "title_len": 49,
+    "description": "Полезные статьи и стратегии инвестирования на фондовом рынке от финансового советника Сергея Свистунова. Уровни для начинающих и профессионалов.",
+    "desc_len": 144,
+    "has_h1": true,
+    "has_og_image": false,
+    "imgs_without_alt": 0,
+    "has_article_schema": false,
+    "has_person_schema": false,
+    "has_faq_schema": true,
+    "has_author": false,
+    "has_date": false,
+    "issues": [
+      "og:image отсутствует"
+    ],
+    "recommendations": []
+  },
+  {
+    "route": "/blog/professional",
+    "filepath": "/root/www/finradun/src/app/blog/professional/page.tsx",
+    "title": "Продвинутые инвестиционные стратегии | Блог Сергея Свистунова",
+    "title_len": 61,
+    "description": "Экспертные материалы для профессиональных инвесторов.",
+    "desc_len": 53,
+    "has_h1": true,
+    "has_og_image": false,
+    "imgs_without_alt": 0,
+    "has_article_schema": false,
+    "has_person_schema": false,
+    "has_faq_schema": false,
+    "has_author": false,
+    "has_date": false,
+    "issues": [
+      "Description слишком короткий (53 симв.) — рекомендуется 140-160",
+      "og:image отсутствует"
+    ],
+    "recommendations": [
+      "Title 61 симв. — можно сократить до 50-60",
+      "Description короткий (53 симв.)",
+      "Article/FAQ Schema не найден",
+      "Article Schema не найден",
+      "Автор (Schema)",
+      "Дата (Schema)"
+    ]
+  },
+  {
+    "route": "/cities/:slug",
+    "filepath": "/root/www/finradun/src/app/cities/[city]/page.tsx",
+    "title": "Город не найден",
+    "title_len": 15,
+    "description": null,
+    "desc_len": 0,
+    "has_h1": true,
+    "has_og_image": false,
+    "imgs_without_alt": 0,
+    "has_article_schema": false,
+    "has_person_schema": false,
+    "has_faq_schema": true,
+    "has_author": false,
+    "has_date": false,
+    "issues": [
+      "Title слишком короткий (15 симв.) — минимум 30",
+      "Description отсутствует",
+      "og:image отсутствует"
+    ],
+    "recommendations": []
+  },
+  {
+    "route": "/cities",
+    "filepath": "/root/www/finradun/src/app/cities/page.tsx",
+    "title": "Города России | Финансовые консультации в регионах",
+    "title_len": 50,
+    "description": "Получите персональные инвестиционные решения и финансовые консультации в вашем городе. Охват всей России: Москва, СПб и еще 350+ городов.",
+    "desc_len": 137,
+    "has_h1": true,
+    "has_og_image": false,
+    "imgs_without_alt": 0,
+    "has_article_schema": false,
+    "has_person_schema": false,
+    "has_faq_schema": false,
+    "has_author": false,
+    "has_date": false,
+    "issues": [
+      "og:image отсутствует"
+    ],
+    "recommendations": [
+      "Article/FAQ Schema не найден",
+      "Article Schema не найден"
+    ]
+  },
+  {
+    "route": "/contacts",
+    "filepath": "/root/www/finradun/src/app/contacts/page.tsx",
+    "title": "Контакты | Сергей Свистунов",
+    "title_len": 27,
+    "description": "Свяжитесь со мной для получения независимой финансовой консультации.",
+    "desc_len": 68,
+    "has_h1": true,
+    "has_og_image": false,
+    "imgs_without_alt": 0,
+    "has_article_schema": false,
+    "has_person_schema": false,
+    "has_faq_schema": true,
+    "has_author": false,
+    "has_date": false,
+    "issues": [
+      "Title слишком короткий (27 симв.) — минимум 30",
+      "Description слишком короткий (68 симв.) — рекомендуется 140-160",
+      "og:image отсутствует"
+    ],
+    "recommendations": [
+      "Description короткий (68 симв.)"
+    ]
+  },
+  {
+    "route": "/",
+    "filepath": "/root/www/finradun/src/app/page.tsx",
+    "title": null,
+    "title_len": 0,
+    "description": null,
+    "desc_len": 0,
+    "has_h1": false,
+    "has_og_image": false,
+    "imgs_without_alt": 0,
+    "has_article_schema": false,
+    "has_person_schema": false,
+    "has_faq_schema": true,
+    "has_author": false,
+    "has_date": false,
+    "issues": [
+      "Title отсутствует",
+      "Description отсутствует",
+      "H1 отсутствует",
+      "og:image отсутствует"
+    ],
+    "recommendations": [
+      "Person Schema отсутствует (главная страница)"
+    ]
+  },
+  {
+    "route": "/partners",
+    "filepath": "/root/www/finradun/src/app/partners/page.tsx",
+    "title": "Партнеры | Сотрудничество | Сергей Свистунов",
+    "title_len": 44,
+    "description": "Агентство Велес Вояж, Franglish и другие партнеры финансового советника Сергея Свистунова. Совместные проекты в сфере туризма и образования.",
+    "desc_len": 140,
+    "has_h1": true,
+    "has_og_image": false,
+    "imgs_without_alt": 0,
+    "has_article_schema": false,
+    "has_person_schema": false,
+    "has_faq_schema": false,
+    "has_author": false,
+    "has_date": false,
+    "issues": [
+      "og:image отсутствует"
+    ],
+    "recommendations": [
+      "Article/FAQ Schema не найден",
+      "Article Schema не найден"
+    ]
+  },
+  {
+    "route": "/portfolio",
+    "filepath": "/root/www/finradun/src/app/portfolio/page.tsx",
+    "title": "Личное пространство | Сергей Свистунов | Финансовый советник",
+    "title_len": 60,
+    "description": "Биография, профессиональный опыт (Тинькофф, ВТБ, Сбербанк) и компетенции финансового советника Сергея Свистунова. 122 место в ЛЧИ-2021.",
+    "desc_len": 135,
+    "has_h1": false,
+    "has_og_image": false,
+    "imgs_without_alt": 0,
+    "has_article_schema": false,
+    "has_person_schema": false,
+    "has_faq_schema": true,
+    "has_author": false,
+    "has_date": false,
+    "issues": [
+      "H1 отсутствует",
+      "og:image отсутствует"
+    ],
+    "recommendations": []
+  }
+]

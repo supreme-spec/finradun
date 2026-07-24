@@ -1,0 +1,6 @@
+{
+  "name": "Finradun",
+  "description": "Персональный сайт Сергея Радуна - Финансовый консалтинг, блог и портфолио.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
